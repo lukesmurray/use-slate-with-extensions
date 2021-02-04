@@ -23,7 +23,7 @@
     "_postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "release": "git add --all && standard-version --sign --commit-all",
+    "release": "git add --all && git reset -- package.json && standard-version --sign --commit-all",
     "prerelease": "yarn lint && yarn build"
   },
   "peerDependencies": {

@@ -6,7 +6,30 @@
 
 [Live Demo](https://use-slate-with-extensions.netlify.app/)
 
-`useSlateWithExtensions` is a simple, powerful, and tiny (**1.31 KB**) hook which enables developers to create encapsulated and composable extensions which can access every part of the Slate API.
+`useSlateWithExtensions` is a simple, powerful, _and_ tiny (**&lt; 2KB**) hook which helps you build self contained and composable extensions for [Slate](https://github.com/ianstormtaylor/slate).
+The extensions built with this hook are easy to share, consume, and understand.
+[Jump to the examples if you want to see how easy it is to create rich extension based applications with this hook](#examples)
+or continue reading to get a brief exploration of how this hook works and the motivation for its design.
+
+## Installation
+
+```sh
+# for npm
+npm install use-slate-with-extensions
+
+# for yarn
+yarn add use-slate-with-extensions
+```
+
+This hook also depends on the slate editor packages.
+
+```sh
+# for npm
+npm install slate slate-history slate-react
+
+# for yarn
+yarn add slate slate-history slate-react
+```
 
 ## Usage
 

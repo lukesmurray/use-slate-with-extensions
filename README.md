@@ -345,3 +345,17 @@ The documentation is a work in progress but all of the logic and semantics is do
     - [x] renderLeaf?: (props: RenderLeafProps) => JSX.Element;
   - [x] implement a slate with extensions hook which returns `Slate` and `Editable`. The user can then render their own components within the `Slate` provider. The hook can be used to implement the `SlateWithExtensions` component.
   - [x] add pipeline for `withPlugins` such as `withReact` and `withHistory`
+
+## Contributing
+
+This project is created using `tsdx`.
+See the [tsdx-readme](./tsdx-readme.md) for instructions about running storybook, tests, examples, etc...
+
+## Publishing
+
+To cut a release
+
+1. run `yarn release`
+2. run `git push --follow-tags origin master && yarn publish`.
+
+To dry run a release run `yarn release --dry-run`

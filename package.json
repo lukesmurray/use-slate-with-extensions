@@ -20,7 +20,7 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "postinstall": "husky install",
+    "_postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "release": "git add --all && standard-version --sign --commit-all",
@@ -87,7 +87,7 @@
     "**/@typescript-eslint/eslint-plugin": "^4.14.2",
     "**/@typescript-eslint/parser": "^4.14.2"
   },
-  "private": "false",
+  "private": false,
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

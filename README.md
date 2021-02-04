@@ -4,7 +4,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/use-slate-with-extensions)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-[Live Demo](https://use-slate-with-extensions.netlify.app/)
+<!-- [Live Demo](https://use-slate-with-extensions.netlify.app/) -->
 
 `useSlateWithExtensions` is a simple, powerful, and tiny (1.31 KB) hook which enables developers to create encapsulated and composable extensions which can access every part of the Slate API.
 

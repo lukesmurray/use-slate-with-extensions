@@ -3,9 +3,9 @@ import 'react-app-polyfill/ie11';
 import * as ReactDOM from 'react-dom';
 import { Default as Basic } from '../stories/Basic.stories';
 import { Default as Highlights } from '../stories/Highlights.stories';
+import { Default as LogOperations } from '../stories/LogOperations.stories';
 import { Default as Mentions } from '../stories/Mentions.stories';
 import { Default as MentionsAndHighlights } from '../stories/MentionsAndHighlights.stories';
-import { Default as LogOperations } from '../stories/LogOperations.stories';
 import './style.css';
 
 const App = () => {

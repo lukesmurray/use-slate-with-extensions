@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Editable, Slate } from 'slate-react';
 import { useSlateState, useSlateWithExtensions } from '../dist';

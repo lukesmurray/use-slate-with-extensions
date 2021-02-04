@@ -20,10 +20,10 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "_postinstall": "husky install",
+    "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "release": "git add --all && git reset -- package.json && standard-version --sign --commit-all",
+    "release": "standard-version --sign",
     "prerelease": "yarn lint && yarn build"
   },
   "peerDependencies": {

@@ -7,8 +7,13 @@
     "dist",
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukesmurray/use-slate-with-extensions.git"
+  },
+  "homepage": "https://github.com/lukesmurray/use-slate-with-extensions#readme",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "scripts": {
     "start": "tsdx watch",

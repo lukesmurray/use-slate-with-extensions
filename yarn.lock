@@ -2460,6 +2460,11 @@
   resolved "https://registry.yarnpkg.com/@types/braces/-/braces-3.0.0.tgz#7da1c0d44ff1c7eb660a36ec078ea61ba7eb42cb"
   integrity sha512-TbH79tcyi9FHwbyboOKeRachRq63mSuWYXOflsNO9ZyE5ClQ/JaozNKl+aWUq87qPNsXasXxi2AbgfwIJ+8GQw==
 
+"@types/dom-inputevent@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@types/dom-inputevent/-/dom-inputevent-1.0.6.tgz#33029ae6be9d62d0b28723781a6c5effe23d1581"
+  integrity sha512-Tl+zVOoJ2RhjcEpcj/7QHFm6jEnPZLurdIEWGgBEdTxYUjky+8rK3ukCHzOC2nZkZSFcIbfqb5YjkQmpaEDYeA==
+
 "@types/esrever@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@types/esrever/-/esrever-0.2.0.tgz#96404a2284b2c7527f08a1e957f8a31705f9880f"

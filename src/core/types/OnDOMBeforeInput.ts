@@ -1,7 +1,12 @@
 import { Editor } from 'slate';
 
 /**
- * Function used to handle before input events
- * The function is called on each of the extensions in turn.
+ * Function used to handle beforeInput events.
+ * The return value indicates whether the next handler should run and defaults
+ * to true.
+ * To prevent the next handler from running return false.
  */
-export type OnDOMBeforeInput = (event: Event, editor: Editor) => void;
+export type OnDOMBeforeInput = (
+  event: InputEvent,
+  editor: Editor
+) => boolean | undefined | void;

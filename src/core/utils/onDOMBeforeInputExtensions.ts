@@ -5,7 +5,8 @@ export const onDOMBeforeInputExtensions = (
   editor: Editor,
   extensions: SlateExtension[]
 ) => (event: Event) => {
-  extensions.forEach(({ onDOMBeforeInput }) => {
-    onDOMBeforeInput && onDOMBeforeInput(event, editor);
-  });
+  extensions.some(
+    ({ onDOMBeforeInput }) =>
+      onDOMBeforeInput?.(event as InputEvent, editor) === false
+  );
 };

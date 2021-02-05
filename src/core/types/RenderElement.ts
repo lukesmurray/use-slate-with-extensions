@@ -7,4 +7,4 @@ import { RenderElementProps } from 'slate-react';
  */
 export type RenderElement = (
   props: RenderElementProps
-) => JSX.Element | undefined;
+) => JSX.Element | undefined | void;

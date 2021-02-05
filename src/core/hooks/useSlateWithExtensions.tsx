@@ -2,17 +2,17 @@ import { useCallback, useMemo } from 'react';
 import { createEditor } from 'slate';
 import { withHistory } from 'slate-history';
 import { ReactEditor, withReact } from 'slate-react';
+import { pipe } from '../../common';
 import {
   EditableWithExtensionsProps,
   SlateWithExtensionsProps,
   useSlateWithExtensionsOptions,
   useSlateWithExtensionsResult,
-} from '..';
+} from '../../core';
 import {
   decorateExtensions,
   onDOMBeforeInputExtensions,
   onKeyDownExtensions,
-  pipe,
   renderElementExtensions,
   renderLeafExtensions,
   useIsInlineExtensions,

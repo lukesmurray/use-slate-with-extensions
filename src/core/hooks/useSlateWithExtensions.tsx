@@ -1,13 +1,13 @@
-import { useCallback, useMemo } from 'react';
-import { createEditor } from 'slate';
-import { withHistory } from 'slate-history';
+import { useCallback, useMemo, useState } from 'react';
+import { createEditor, Editor } from 'slate';
 import { ReactEditor, withReact } from 'slate-react';
-import { pipe } from '../../common';
+import { pipe } from '../..';
 import {
   EditableWithExtensionsProps,
   SlateWithExtensionsProps,
   useSlateWithExtensionsOptions,
   useSlateWithExtensionsResult,
+  withHistoryStable,
 } from '../../core';
 import {
   decorateExtensions,
@@ -15,10 +15,11 @@ import {
   onKeyDownExtensions,
   renderElementExtensions,
   renderLeafExtensions,
-  useIsInlineExtensions,
-  useIsVoidExtensions,
-  useOnChangeExtensions,
+  useIsInlineExtensionsPlugin,
+  useIsVoidExtensionsPlugin,
+  useOnChangeExtensionsPlugin,
 } from '../utils';
+import { FunctionProperties } from '../utils/FunctionProperties';
 
 export const useSlateWithExtensions = (
   options: useSlateWithExtensionsOptions
@@ -29,27 +30,68 @@ export const useSlateWithExtensions = (
   const extensions = useMemo(() => options.extensions ?? [], [
     options.extensions,
   ]);
-  const plugins = useMemo(() => options.plugins ?? [withReact, withHistory], [
-    options.plugins,
-  ]);
-
-  // create the editor
-  const editor = useMemo(
-    () => pipe(createEditor(), ...plugins) as ReactEditor,
-    [plugins]
+  const plugins = useMemo(
+    () => options.plugins ?? [withReact, withHistoryStable], // default plugins
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [...(options.pluginsDeps ?? [])]
   );
 
-  // add the high level overrideable behaviors to the editor
-  useIsInlineExtensions(editor, extensions, [
+  // create the editor as a singleton
+  // see https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
+  const [editorSingleton] = useState(() => createEditor());
+
+  // memoize the original functions from the editor
+  const editorFunctions: FunctionProperties<Editor> = useMemo(() => {
+    return {
+      isInline: editorSingleton.isInline,
+      isVoid: editorSingleton.isVoid,
+      normalizeNode: editorSingleton.normalizeNode,
+      onChange: editorSingleton.onChange,
+      addMark: editorSingleton.addMark,
+      apply: editorSingleton.apply,
+      deleteBackward: editorSingleton.deleteBackward,
+      deleteForward: editorSingleton.deleteForward,
+      deleteFragment: editorSingleton.deleteFragment,
+      getFragment: editorSingleton.getFragment,
+      insertBreak: editorSingleton.insertBreak,
+      insertFragment: editorSingleton.insertFragment,
+      insertNode: editorSingleton.insertNode,
+      insertText: editorSingleton.insertText,
+      removeMark: editorSingleton.removeMark,
+    };
+  }, [editorSingleton]);
+
+  // create plugins for the extension editor methods
+  const isInlinePlugin = useIsInlineExtensionsPlugin(extensions, [
     ...extensions.flatMap(e => e.isInlineDeps ?? []),
   ]);
-
-  useIsVoidExtensions(editor, extensions, [
+  const isVoidPlugin = useIsVoidExtensionsPlugin(extensions, [
     ...extensions.flatMap(e => e.isVoidDeps ?? []),
   ]);
-
-  useOnChangeExtensions(editor, extensions, [
+  const onChangePlugin = useOnChangeExtensionsPlugin(extensions, [
     ...extensions.flatMap(e => e.onChangeDeps ?? []),
+  ]);
+
+  // apply the plugins to the editor
+  const editor = useMemo(() => {
+    // before applying plugins reset the editor functions
+    for (let [key, value] of Object.entries(editorFunctions)) {
+      (editorSingleton as any)[key] = value;
+    }
+    return pipe(
+      editorSingleton,
+      isInlinePlugin,
+      isVoidPlugin,
+      onChangePlugin,
+      ...plugins
+    ) as ReactEditor;
+  }, [
+    editorFunctions,
+    editorSingleton,
+    isInlinePlugin,
+    isVoidPlugin,
+    onChangePlugin,
+    plugins,
   ]);
 
   const getSlateProps = useCallback((): SlateWithExtensionsProps => {

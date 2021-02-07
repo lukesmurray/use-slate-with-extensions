@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.0...v0.2.1) (2021-02-07)
+
+
+### Features
+
+* **plugins:** remove useEffect from useSlateWithExtensions and add pluginDeps ([adce7c6](https://github.com/lukesmurray/use-slate-with-extensions/commit/adce7c6dd518d5fc6cd7ffb2500d51ac270deaea))
+
 ## [0.2.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.1.5...v0.2.0) (2021-02-05)
 
 

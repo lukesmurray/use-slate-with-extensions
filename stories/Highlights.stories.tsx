@@ -33,7 +33,7 @@ export const Default: Story = () => {
   );
 };
 
-const useHighlightExtension = (
+export const useHighlightExtension = (
   initialSearch?: string
 ): SlateExtension & {
   getSearchBarProps: () => SearchBarProps;
@@ -102,7 +102,10 @@ interface SearchBarProps {
   onSearchChange: (search: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ search, onSearchChange }) => {
+export const SearchBar: React.FC<SearchBarProps> = ({
+  search,
+  onSearchChange,
+}) => {
   return (
     <label>
       Search Text{'  '}

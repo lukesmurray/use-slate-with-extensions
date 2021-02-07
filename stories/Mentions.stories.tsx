@@ -40,7 +40,7 @@ export const Default: Story = () => {
 /**
  * All of the logic for adding and rendering mentions is encapsulated in this plugin
  */
-const useMentionExtension = (): SlateExtension & {
+export const useMentionExtension = (): SlateExtension & {
   getMentionSelectProps: () => MentionSelectProps;
 } => {
   // state for Mentions
@@ -231,7 +231,7 @@ interface MentionSelectProps {
 /**
  * Mention Select which uses tippy js to position itself at the current selection
  */
-const MentionSelect: React.FC<MentionSelectProps> = props => {
+export const MentionSelect: React.FC<MentionSelectProps> = props => {
   // get the current selection
   const domSelection = window.getSelection();
   const editor = useSlate();

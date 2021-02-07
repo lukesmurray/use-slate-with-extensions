@@ -15,10 +15,16 @@ export interface useSlateWithExtensionsOptions {
    */
   extensions?: SlateExtension[];
   /**
-   * plugins used to extend the editor, plugin methods are called after all extension methods.
+   * plugins used to extend the editor. withHistory is incompatible with useSlateWithExtensions. use withHistoryStable instead.
+   * plugin methods are called after all extension methods.
    * The plugins are applied in the order they are specified. i.e. from left to right.
    * If you supply your own plugins you must include `withReact`.
-   * By default the applied plugins are `[withReact, withHistory]`
+   * By default the applied plugins are `[withReact, withHistoryStable]`
    */
   plugins?: SlatePlugin[];
+
+  /**
+   * The dependencies for the passed in plugins
+   */
+  pluginsDeps?: any[];
 }

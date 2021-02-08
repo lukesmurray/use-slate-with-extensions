@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.2...v0.2.3) (2021-02-08)
+
+
+### Bug Fixes
+
+* **useslatewithextensions:** remove circular dependency ([46c0e3f](https://github.com/lukesmurray/use-slate-with-extensions/commit/46c0e3ff526fed4bf7081ee48c36be0a8ebb7a2b))
+
 ### [0.2.2](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.1...v0.2.2) (2021-02-08)
 
 

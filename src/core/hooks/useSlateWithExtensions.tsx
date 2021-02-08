@@ -1,16 +1,17 @@
 import { useCallback, useMemo, useState } from 'react';
 import { createEditor, Editor } from 'slate';
 import { ReactEditor, withReact } from 'slate-react';
-import { pipe } from '../..';
+import { pipe } from '../../common';
+import { withHistoryStable } from '../plugins';
 import {
   EditableWithExtensionsProps,
   SlateWithExtensionsProps,
   useSlateWithExtensionsOptions,
   useSlateWithExtensionsResult,
-  withHistoryStable,
-} from '../../core';
+} from '../types';
 import {
   decorateExtensions,
+  FunctionProperties,
   onDOMBeforeInputExtensions,
   onKeyDownExtensions,
   renderElementExtensions,
@@ -19,7 +20,6 @@ import {
   useIsVoidExtensionsPlugin,
   useOnChangeExtensionsPlugin,
 } from '../utils';
-import { FunctionProperties } from '../utils/FunctionProperties';
 
 export const useSlateWithExtensions = (
   options: useSlateWithExtensionsOptions

@@ -28,7 +28,7 @@
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
-    "release": "standard-version --sign",
+    "release": "HUSKY=0 standard-version --sign",
     "prerelease": "yarn lint && yarn build"
   },
   "peerDependencies": {

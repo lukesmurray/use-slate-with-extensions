@@ -25,7 +25,7 @@ export const renderLeafExtensions = (
 
   // eslint-disable-next-line react/display-name
   return (LeafProps: RenderLeafProps) => {
-    // XXX: A wrapper tag component to make useContext get correct value inside.
+    // A wrapper tag component to make useContext get correct value inside.
     return <Tag {...LeafProps} />;
   };
 };

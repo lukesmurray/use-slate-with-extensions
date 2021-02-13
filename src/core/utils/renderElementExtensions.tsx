@@ -23,7 +23,7 @@ export const renderElementExtensions = (
 
   // eslint-disable-next-line react/display-name
   return (elementProps: RenderElementProps) => {
-    // XXX: A wrapper tag component to make useContext get correct value inside.
+    // A wrapper tag component to make useContext get correct value inside.
     return <Tag {...elementProps} />;
   };
 };

@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { Editable, Slate } from 'slate-react';
-import { useSlateState, useSlateWithExtensions } from '../.';
+import { useSlateState, useSlateWithExtensions } from '../dist';
 
 export default {
   title: 'Examples/Basic',

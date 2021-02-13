@@ -1,15 +1,16 @@
-import { Descendant } from 'slate';
+import { Descendant, Editor } from 'slate';
 import { SlateExtension, SlatePlugin } from '.';
 
 export interface useSlateWithExtensionsOptions {
   /**
-   * The value of the slate editor
+   * The value of the slate editor used to render a controlled editor.
    */
-  value: Descendant[];
+  value?: Descendant[];
   /**
    * callback for when the slate editor changes
+   * used to render a controlled editor.
    */
-  onChange: (value: Descendant[]) => void;
+  onChange?: (value: Descendant[]) => void;
   /**
    * extensions used to implement behavior
    */
@@ -27,4 +28,14 @@ export interface useSlateWithExtensionsOptions {
    * The dependencies for the passed in plugins
    */
   pluginsDeps?: any[];
+
+  /**
+   * optional initial state which can be used to render an uncontrolled editor.
+   */
+  initialState?: Descendant[];
+
+  /**
+   * you can pass the editor singleton but this is only really used for testing
+   */
+  editor?: Editor;
 }

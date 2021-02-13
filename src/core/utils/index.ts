@@ -1,4 +1,5 @@
 export * from './decorateExtensions';
+export * from './defaultInitialState';
 export * from './FunctionProperties';
 export * from './FunctionPropertyNames';
 export * from './onDOMBeforeInputExtensions';

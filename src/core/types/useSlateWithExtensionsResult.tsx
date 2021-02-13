@@ -1,3 +1,4 @@
+import { Editor } from 'slate';
 import { Slate } from 'slate-react';
 import { EditableProps } from 'slate-react/dist/components/editable';
 
@@ -19,4 +20,5 @@ export type SlateWithExtensionsProps = Omit<
 export type useSlateWithExtensionsResult = {
   getSlateProps: () => SlateWithExtensionsProps;
   getEditableProps: () => EditableWithExtensionsProps;
+  editor: Editor;
 };

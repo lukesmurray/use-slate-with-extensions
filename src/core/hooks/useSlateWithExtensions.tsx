@@ -11,6 +11,7 @@ import {
 } from '../types';
 import {
   decorateExtensions,
+  defaultInitialState,
   FunctionProperties,
   onDOMBeforeInputExtensions,
   onKeyDownExtensions,
@@ -22,23 +23,31 @@ import {
 } from '../utils';
 
 export const useSlateWithExtensions = (
-  options: useSlateWithExtensionsOptions
+  options?: useSlateWithExtensionsOptions
 ): useSlateWithExtensionsResult => {
+  const [uncontrolledValue, setUncontrolledValue] = useState(
+    options?.initialState ?? defaultInitialState
+  );
   // get the memoized properties from options
-  const onChange = useMemo(() => options.onChange, [options.onChange]);
-  const value = useMemo(() => options.value, [options.value]);
-  const extensions = useMemo(() => options.extensions ?? [], [
-    options.extensions,
+  const onChange = useMemo(() => options?.onChange ?? setUncontrolledValue, [
+    options?.onChange,
+  ]);
+  const value = useMemo(() => options?.value ?? uncontrolledValue, [
+    options?.value,
+    uncontrolledValue,
+  ]);
+  const extensions = useMemo(() => options?.extensions ?? [], [
+    options?.extensions,
   ]);
   const plugins = useMemo(
-    () => options.plugins ?? [withReact, withHistoryStable], // default plugins
+    () => options?.plugins ?? [withReact, withHistoryStable], // default plugins
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [...(options.pluginsDeps ?? [])]
+    [...(options?.pluginsDeps ?? [])]
   );
 
   // create the editor as a singleton
   // see https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
-  const [editorSingleton] = useState(() => createEditor());
+  const [editorSingleton] = useState(() => options?.editor ?? createEditor());
 
   // memoize the original functions from the editor
   const editorFunctions: FunctionProperties<Editor> = useMemo(() => {
@@ -146,5 +155,6 @@ export const useSlateWithExtensions = (
   return {
     getEditableProps,
     getSlateProps,
+    editor,
   };
 };

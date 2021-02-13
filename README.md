@@ -33,8 +33,34 @@ yarn add slate slate-history slate-react
 
 ## Usage
 
-The simplest example of `useSlateWithExtensions` doesn't use any extensions at all.
+`useSlateWithExtensions` simply handles building props which you can pass to your `Slate` and `Editable`.
+This can be convenient even if you don't use extensions.
+For example you can use `useSlateWithExtensions` as an _uncontrolled component_ by passing nothing to the hook.
+The hook will return props to render a Slate editor with `withReact` and `withHistory` enabled by default.
+You can also optionally pass some initial state to render.
+The default is to render a single element with an empty leaf.
+All you need to do is pass `getSlateProps` and `getEditableProps` to your `<Slate/` and `<Editable/` components.
+
+```tsx
+import { useSlateWithExtensions } from 'use-slate-with-extensions';
+
+const { getEditableProps, getSlateProps } = useSlateWithExtensions();
+// // optionally pass initialState
+// {
+//   initialState: [{ children: [{ text: '' }] }] // <-- this is the default
+// }
+
+// render your Slate and Editable
+return (
+  <Slate {...getSlateProps()}>
+    <Editable {...getEditableProps()} />
+  </Slate>
+);
+```
+
+The next simplest example is to use _useSlateWithExtensions_ as a _controlled component_.
 All you need to do is provide a `value` and `onChange` callback similar to any other controlled component.
+In this case I'm using a helpful hook `useSlateState` provided by this package to create my `value` and `onChange` callbacks.
 
 ```tsx
 import {
@@ -44,6 +70,8 @@ import {
 
 // create the slate value and change handlers
 const [value, onChange] = useSlateState();
+// you could also pass initial state
+// const [value, onChange] = useSlateState([{ children: [{ text: '' }] }]);
 
 // use the hook
 const { getEditableProps, getSlateProps } = useSlateWithExtensions({

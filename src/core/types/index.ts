@@ -1,5 +1,6 @@
 export * from './Decorate';
 export * from './InsertBreak';
+export * from './InsertText';
 export * from './IsInline';
 export * from './IsVoid';
 export * from './OnChange';

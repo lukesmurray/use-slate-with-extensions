@@ -564,7 +564,7 @@ Hopefully you can see that it isn't very hard to modify plugins to work with _us
       - [x] insertBreak: () => void;
       - [ ] insertFragment: (fragment: Node[]) => void;
       - [ ] insertNode: (node: Node) => void;
-      - [ ] insertText: (text: string) => void;
+      - [x] insertText: (text: string) => void;
       - [ ] removeMark: (key: string) => void;
   - [x] Editable functions
     - [x] decorate?: (entry: NodeEntry) => Range[];

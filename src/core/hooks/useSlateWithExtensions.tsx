@@ -17,6 +17,7 @@ import {
   onKeyDownExtensions,
   renderElementExtensions,
   renderLeafExtensions,
+  useInsertBreakExtensionsPlugin,
   useIsInlineExtensionsPlugin,
   useIsVoidExtensionsPlugin,
   useOnChangeExtensionsPlugin,
@@ -81,6 +82,10 @@ export const useSlateWithExtensions = (
     ...extensions.flatMap(e => e.onChangeDeps ?? []),
   ]);
 
+  const insertBreakPlugin = useInsertBreakExtensionsPlugin(extensions, [
+    ...extensions.flatMap(e => e.insertBreakDeps ?? []),
+  ]);
+
   // apply the plugins to the editor
   const editor = useMemo(() => {
     // before applying plugins reset the editor functions
@@ -92,11 +97,13 @@ export const useSlateWithExtensions = (
       isInlinePlugin,
       isVoidPlugin,
       onChangePlugin,
+      insertBreakPlugin,
       ...plugins
     ) as ReactEditor;
   }, [
     editorFunctions,
     editorSingleton,
+    insertBreakPlugin,
     isInlinePlugin,
     isVoidPlugin,
     onChangePlugin,

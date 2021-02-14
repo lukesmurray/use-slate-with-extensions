@@ -561,7 +561,7 @@ Hopefully you can see that it isn't very hard to modify plugins to work with _us
       - [ ] deleteForward: (unit: 'character' | 'word' | 'line' | 'block') => void;
       - [ ] deleteFragment: () => void;
       - [ ] getFragment: () => Descendant[];
-      - [ ] insertBreak: () => void;
+      - [x] insertBreak: () => void;
       - [ ] insertFragment: (fragment: Node[]) => void;
       - [ ] insertNode: (node: Node) => void;
       - [ ] insertText: (text: string) => void;

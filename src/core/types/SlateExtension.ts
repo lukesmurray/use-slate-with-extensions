@@ -1,5 +1,6 @@
 import {
   Decorate,
+  InsertBreak,
   IsInline,
   IsVoid,
   OnChange,
@@ -73,6 +74,16 @@ export interface SlateExtension {
    * Dependencies for onChange
    */
   onChangeDeps?: any[];
+
+  /**
+   * @see {InsertBreak}
+   */
+  insertBreak?: InsertBreak;
+
+  /**
+   * Dependencies for insertBreak
+   */
+  insertBreakDeps?: any[];
 
   /**
    * @see {Decorate}

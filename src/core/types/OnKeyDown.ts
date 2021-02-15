@@ -1,13 +1,14 @@
 import { KeyboardEvent } from 'react';
 import { Editor } from 'slate';
+import { Next } from '../../common';
 
 /**
  * Function used to handle key down.
- * The return value indicates whether the next handler should run and defaults
- * to true.
- * To prevent the next handler from running return false.
+ * Use next to call the next onKeyDown handler.
+ * Next is undefined if there are no more onKeyDown handlers.
  */
 export type OnKeyDown = (
   event: KeyboardEvent<{}>,
-  editor: Editor
-) => boolean | undefined | void;
+  editor: Editor,
+  next: Next<OnKeyDown> | undefined
+) => undefined | void;

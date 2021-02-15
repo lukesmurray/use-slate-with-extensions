@@ -548,24 +548,24 @@ Hopefully you can see that it isn't very hard to modify plugins to work with _us
 ## Road map
 
 - [ ] Implement hooks for the following methods in extensions
-  - [ ] Editor functions
-    - [ ] high level overrideable behaviors
+  - [x] Editor functions
+    - [x] high level overrideable behaviors
       - [x] isInline: (element: Element) => boolean;
       - [x] isVoid: (element: Element) => boolean;
-      - [ ] normalizeNode: (entry: NodeEntry) => void;
+      - [x] normalizeNode: (entry: NodeEntry) => void;
       - [x] onChange: () => void;
-    - [ ] low level overrideable behaviors
-      - [ ] addMark: (key: string, value: any) => void;
-      - [ ] apply: (operation: Operation) => void;
-      - [ ] deleteBackward: (unit: 'character' | 'word' | 'line' | 'block') => void;
-      - [ ] deleteForward: (unit: 'character' | 'word' | 'line' | 'block') => void;
-      - [ ] deleteFragment: () => void;
-      - [ ] getFragment: () => Descendant[];
+    - [x] low level overrideable behaviors
+      - [x] addMark: (key: string, value: any) => void;
+      - [x] apply: (operation: Operation) => void;
+      - [x] deleteBackward: (unit: 'character' | 'word' | 'line' | 'block') => void;
+      - [x] deleteForward: (unit: 'character' | 'word' | 'line' | 'block') => void;
+      - [x] deleteFragment: () => void;
+      - [x] getFragment: () => Descendant[];
       - [x] insertBreak: () => void;
-      - [ ] insertFragment: (fragment: Node[]) => void;
-      - [ ] insertNode: (node: Node) => void;
+      - [x] insertFragment: (fragment: Node[]) => void;
+      - [x] insertNode: (node: Node) => void;
       - [x] insertText: (text: string) => void;
-      - [ ] removeMark: (key: string) => void;
+      - [x] removeMark: (key: string) => void;
   - [x] Editable functions
     - [x] decorate?: (entry: NodeEntry) => Range[];
     - [x] onDOMBeforeInput?: (event: Event) => void;
@@ -574,6 +574,10 @@ Hopefully you can see that it isn't very hard to modify plugins to work with _us
     - [x] renderLeaf?: (props: RenderLeafProps) => JSX.Element;
   - [x] implement a slate with extensions hook which returns `Slate` and `Editable`. The user can then render their own components within the `Slate` provider. The hook can be used to implement the `SlateWithExtensions` component.
   - [x] add pipeline for `withPlugins` such as `withReact` and `withHistory`
+- [ ] Translate remaining functions into middleware implementations
+  - [ ] decorate?: (entry: NodeEntry) => Range[];
+  - [ ] renderElement?: (props: RenderElementProps) => JSX.Element;
+  - [ ] renderLeaf?: (props: RenderLeafProps) => JSX.Element;
 
 ## Contributing
 

@@ -1,8 +1,12 @@
 import { Editor, Element } from 'slate';
+import { Next } from '../../common';
 
 /**
  * Function used to determine if an element is a void element.
- * If the function returns undefined then the next IsVoid function is called.
- * If the function returns a boolean then that is assumed to be the value for IsVoid.
+ * Use next to call the next isVoid handler.
  */
-export type IsVoid = (editor: Editor, element: Element) => boolean | undefined;
+export type IsVoid = (
+  element: Element,
+  editor: Editor,
+  next: Next<IsVoid>
+) => boolean;

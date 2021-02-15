@@ -94,7 +94,7 @@ export const useMentionExtension = (): SlateExtension & {
 
   // handle on change
   const onChange = useCallback<NonNullable<SlateExtension['onChange']>>(
-    editor => {
+    (editor, next) => {
       const { selection } = editor;
       if (selection && Range.isCollapsed(selection)) {
         const [start] = Range.edges(selection);
@@ -112,31 +112,34 @@ export const useMentionExtension = (): SlateExtension & {
           setTarget(beforeRange);
           setSearch(beforeMatch[1]);
           setIndex(0);
-          return;
+          return next(editor);
         }
       }
 
       setTarget(undefined);
+      return next(editor);
     },
     []
   );
 
   // make mentions inline elements
   const isInline = useCallback<NonNullable<SlateExtension['isInline']>>(
-    (editor, element) => {
+    (element, editor, next) => {
       if (element.type === 'mention') {
         return true;
       }
+      return next(element, editor);
     },
     []
   );
 
   // make mentions void elements
   const isVoid = useCallback<NonNullable<SlateExtension['isVoid']>>(
-    (editor, element) => {
+    (element, editor, next) => {
       if (element.type === 'mention') {
         return true;
       }
+      return next(element, editor);
     },
     []
   );

@@ -1,7 +1,8 @@
 import { Editor } from 'slate';
+import { Next } from '../../common';
 
 /**
  * Function called whenever a change occurs in an editor.
- * Currently no way to control whether the next OnChange runs.
+ * Use next to call the next onChange handler.
  */
-export type OnChange = (editor: Editor) => void;
+export type OnChange = (editor: Editor, next: Next<OnChange>) => void;

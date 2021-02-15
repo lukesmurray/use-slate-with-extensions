@@ -11,15 +11,11 @@ import {
 } from '../types';
 import {
   decorateExtensions,
-  onDOMBeforeInputExtensions,
-  onKeyDownExtensions,
   renderElementExtensions,
   renderLeafExtensions,
-  useInsertBreakExtensionsPlugin,
-  useInsertTextExtensionsPlugin,
-  useIsInlineExtensionsPlugin,
-  useIsVoidExtensionsPlugin,
-  useOnChangeExtensionsPlugin,
+  useEditorMethodExtensionsPlugin,
+  useOnDOMBeforeInputHandler,
+  useOnKeyDownHandler,
 } from '../utils';
 
 export const useSlateWithExtensions = (
@@ -71,23 +67,57 @@ export const useSlateWithExtensions = (
   }, [editorSingleton]);
 
   // create plugins for the extension editor methods
-  const isInlinePlugin = useIsInlineExtensionsPlugin(extensions, [
-    ...extensions.flatMap(e => e.isInlineDeps ?? []),
-  ]);
-  const isVoidPlugin = useIsVoidExtensionsPlugin(extensions, [
-    ...extensions.flatMap(e => e.isVoidDeps ?? []),
-  ]);
-  const onChangePlugin = useOnChangeExtensionsPlugin(extensions, [
-    ...extensions.flatMap(e => e.onChangeDeps ?? []),
-  ]);
-
-  const insertBreakPlugin = useInsertBreakExtensionsPlugin(extensions, [
-    ...extensions.flatMap(e => e.insertBreakDeps ?? []),
-  ]);
-
-  const insertTextPlugin = useInsertTextExtensionsPlugin(extensions, [
-    ...extensions.flatMap(e => e.insertTextDeps ?? []),
-  ]);
+  const isInlinePlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'isInline'
+  );
+  const isVoidPlugin = useEditorMethodExtensionsPlugin(extensions, 'isVoid');
+  const normalizeNodePlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'normalizeNode'
+  );
+  const onChangePlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'onChange'
+  );
+  const addMarkPlugin = useEditorMethodExtensionsPlugin(extensions, 'addMark');
+  const applyPlugin = useEditorMethodExtensionsPlugin(extensions, 'apply');
+  const deleteBackwardPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'deleteBackward'
+  );
+  const deleteForwardPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'deleteForward'
+  );
+  const deleteFragmentPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'deleteFragment'
+  );
+  const getFragmentPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'getFragment'
+  );
+  const insertBreakPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'insertBreak'
+  );
+  const insertFragmentPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'insertFragment'
+  );
+  const insertNodePlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'insertNode'
+  );
+  const insertTextPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'insertText'
+  );
+  const removeMarkPlugin = useEditorMethodExtensionsPlugin(
+    extensions,
+    'removeMark'
+  );
 
   // apply the plugins to the editor
   const editor = useMemo(() => {
@@ -99,20 +129,40 @@ export const useSlateWithExtensions = (
       editorSingleton,
       isInlinePlugin,
       isVoidPlugin,
+      normalizeNodePlugin,
       onChangePlugin,
+      addMarkPlugin,
+      applyPlugin,
+      deleteBackwardPlugin,
+      deleteForwardPlugin,
+      deleteFragmentPlugin,
+      getFragmentPlugin,
       insertBreakPlugin,
+      insertFragmentPlugin,
+      insertNodePlugin,
       insertTextPlugin,
+      removeMarkPlugin,
       ...plugins
     ) as ReactEditor;
   }, [
+    addMarkPlugin,
+    applyPlugin,
+    deleteBackwardPlugin,
+    deleteForwardPlugin,
+    deleteFragmentPlugin,
     editorFunctions,
     editorSingleton,
+    getFragmentPlugin,
     insertBreakPlugin,
+    insertFragmentPlugin,
+    insertNodePlugin,
     insertTextPlugin,
     isInlinePlugin,
     isVoidPlugin,
+    normalizeNodePlugin,
     onChangePlugin,
     plugins,
+    removeMarkPlugin,
   ]);
 
   const getSlateProps = useCallback((): SlateWithExtensionsProps => {
@@ -124,6 +174,8 @@ export const useSlateWithExtensions = (
   }, [editor, onChange, value]);
 
   // create the callbacks for the editable
+  const onKeyDown = useOnKeyDownHandler(editor, extensions);
+  const onDOMBeforeInput = useOnDOMBeforeInputHandler(editor, extensions);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const renderElement = useCallback(renderElementExtensions(extensions), [
@@ -139,20 +191,9 @@ export const useSlateWithExtensions = (
   ]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onKeyDown = useCallback(onKeyDownExtensions(editor, extensions), [
-    ...extensions.flatMap(e => e.onKeyDownDeps ?? []),
-  ]);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const decorate = useCallback(decorateExtensions(editor, extensions), [
     ...extensions.flatMap(e => e.decorateDeps ?? []),
   ]);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onDOMBeforeInput = useCallback(
-    onDOMBeforeInputExtensions(editor, extensions),
-    [...extensions.flatMap(e => e.onDOMBeforeInputDeps ?? [])]
-  );
 
   const getEditableProps = useCallback((): EditableWithExtensionsProps => {
     return {

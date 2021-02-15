@@ -9,7 +9,9 @@ export default {
 
 export const Default: Story = () => {
   const { getEditableProps, getSlateProps } = useSlateWithExtensions({
-    initialState: [{ children: [{ text: 'Hello' }] }],
+    initialState: [
+      { children: [{ text: 'This is an uncontrolled slate object' }] },
+    ],
   });
 
   return (

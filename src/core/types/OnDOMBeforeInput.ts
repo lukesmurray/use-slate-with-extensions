@@ -1,12 +1,13 @@
 import { Editor } from 'slate';
+import { Next } from '../../common';
 
 /**
- * Function used to handle beforeInput events.
- * The return value indicates whether the next handler should run and defaults
- * to true.
- * To prevent the next handler from running return false.
+ * Function used to handle before input events.
+ * Use next to call the next onDOMBeforeInput handler.
+ * Next is undefined if there are no more onDOMBeforeInput handlers.
  */
 export type OnDOMBeforeInput = (
   event: InputEvent,
-  editor: Editor
-) => boolean | undefined | void;
+  editor: Editor,
+  next: Next<OnDOMBeforeInput> | undefined
+) => undefined | void;

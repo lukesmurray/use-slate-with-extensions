@@ -30,11 +30,15 @@ export const Default: Story = () => {
 };
 
 const useLogOperationsExtension = (): SlateExtension => {
-  const onChange = useCallback(editor => {
-    console.group('operations');
-    editor.operations.forEach(op => console.log(op));
-    console.groupEnd();
-  }, []);
+  const onChange = useCallback<NonNullable<SlateExtension['onChange']>>(
+    (editor, next) => {
+      console.group('operations');
+      editor.operations.forEach(op => console.log(op));
+      console.groupEnd();
+      next(editor);
+    },
+    []
+  );
 
   return {
     onChange,

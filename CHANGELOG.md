@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.4...v0.3.0) (2021-02-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **middleware:** All methods which were run one at a time such as insertBreak and onChange now
+require the user to call next to run the next method. Editor is no longer the first argument for
+isInline and isVoid
+
+### Features
+
+* **insertbreak:** add insert break to the editor methods that can be overridden ([c4c9393](https://github.com/lukesmurray/use-slate-with-extensions/commit/c4c939321845ed5199181aa8c735e6e1b80157f4))
+* **inserttext:** implement insert text method on the editor ([7a81d5b](https://github.com/lukesmurray/use-slate-with-extensions/commit/7a81d5b744b5bc4f43771954228e6b24c796be6b))
+* **middleware:** reimplement most editor and slate methods as middleware ([d7b0d94](https://github.com/lukesmurray/use-slate-with-extensions/commit/d7b0d946fc27a6c0e8c23a7121a2430d179f3809))
+
 ### [0.2.4](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.3...v0.2.4) (2021-02-13)
 
 ### [0.2.3](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.2.2...v0.2.3) (2021-02-08)

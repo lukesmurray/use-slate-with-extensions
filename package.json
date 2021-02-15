@@ -107,5 +107,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  }
+  },
+  "sideEffects": false
 }

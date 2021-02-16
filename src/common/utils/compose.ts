@@ -1,5 +1,11 @@
-import { Head } from '.';
+import { Head } from '..';
 
+/**
+ * Compose an array of middleware. Each function is assumed to have `next` as
+ * the last parameter. This function merges all the functions and calls each of
+ * them one at a time with next as the last parameter.
+ * @param middleware array of middleware to compose
+ */
 export function compose<T extends (...args: any) => any>(...middleware: T[]) {
   if (middleware.length === 0) {
     throw new Error('must pass at least one middleware to compose');

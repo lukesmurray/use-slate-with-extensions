@@ -20,5 +20,5 @@ export * from './RenderElement';
 export * from './RenderLeaf';
 export * from './SlateExtension';
 export * from './SlatePlugin';
-export * from './useSlateWithExtensionsOptions';
-export * from './useSlateWithExtensionsResult';
+export * from './UseSlateWithExtensionsOptions';
+export * from './UseSlateWithExtensionsResult';

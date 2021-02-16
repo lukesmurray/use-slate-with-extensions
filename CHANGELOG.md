@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.2...v0.3.3) (2021-02-16)
+
+
+### Bug Fixes
+
+* **filenames:** fix filename case sensitivity ([3e136c4](https://github.com/lukesmurray/use-slate-with-extensions/commit/3e136c4e229c0e776bc462cddf5172db375c6215))
+
 ### [0.3.2](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.1...v0.3.2) (2021-02-16)
 
 ### [0.3.1](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.0...v0.3.1) (2021-02-15)

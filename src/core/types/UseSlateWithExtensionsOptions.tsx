@@ -35,7 +35,7 @@ export interface UseSlateWithExtensionsOptions {
    * The plugins are applied in the order they are specified. i.e. from left to
    * right.
    * If you supply your own plugins you must include `withReact`.
-   * By default the applied plugins are `[withReact, withHistoryStable]`
+   * By default the applied plugins are `[withReact, withHistory]`
    */
   postPlugins?: SlatePlugin[];
 

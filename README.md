@@ -33,24 +33,21 @@ yarn add slate slate-history slate-react
 
 ## Usage
 
-`useSlateWithExtensions` simply handles building props which you can pass to your `Slate` and `Editable`.
-This can be convenient even if you don't use extensions.
-For example you can use `useSlateWithExtensions` as an _uncontrolled component_ by passing nothing to the hook.
-The hook will return props to render a Slate editor with `withReact` and `withHistory` enabled by default.
+`useSlateWithExtensions` is a hook which converts an array of `SlateExtension`'s into props which can be passed to a `Slate` and `Editable` component. The hook can be convenient even if you don't use extensions.
+For example, if you pass nothing to the hook, you can use the props returned by `useSlateWithExtensions` to render an _uncontrolled component_.
+The hook will by default apply `withReact` and `withHistory` internally, and create an initial empty editor state.
 You can also optionally pass some initial state to render.
-The default is to render a single element with an empty leaf.
-All you need to do is pass `getSlateProps` and `getEditableProps` to your `<Slate/` and `<Editable/` components.
+All you need to do to use the hook is provide the props from `getSlateProps` and `getEditableProps` to your `<Slate/` and `<Editable/` components.
 
 ```tsx
 import { useSlateWithExtensions } from 'use-slate-with-extensions';
 
-const { getEditableProps, getSlateProps } = useSlateWithExtensions();
-// // optionally pass initialState
-// {
-//   initialState: [{ children: [{ text: '' }] }] // <-- this is the default
-// }
+const { getEditableProps, getSlateProps } = useSlateWithExtensions({
+  // optional initial state
+  initialState: [{ children: [{ text: '' }] }],
+});
 
-// render your Slate and Editable
+// render your Slate and Editable as an uncontrolled component
 return (
   <Slate {...getSlateProps()}>
     <Editable {...getEditableProps()} />
@@ -58,8 +55,8 @@ return (
 );
 ```
 
-The next simplest example is to use _useSlateWithExtensions_ as a _controlled component_.
-All you need to do is provide a `value` and `onChange` callback similar to any other controlled component.
+The next simplest example is to use `useSlateWithExtensions` as a _controlled component_.
+All you need to do is provide a `value` and `onChange` callback similar to any other controlled components.
 In this case I'm using a helpful hook `useSlateState` provided by this package to create my `value` and `onChange` callbacks.
 
 ```tsx
@@ -70,16 +67,16 @@ import {
 
 // create the slate value and change handlers
 const [value, onChange] = useSlateState();
-// you could also pass initial state
+// you could also pass initial state to the useSlateState hook
 // const [value, onChange] = useSlateState([{ children: [{ text: '' }] }]);
 
-// use the hook
+// use the useSlateWithExtensions hook
 const { getEditableProps, getSlateProps } = useSlateWithExtensions({
   onChange,
   value,
 });
 
-// render your Slate and Editable
+// render your Slate and Editable as a controlled component
 return (
   <Slate {...getSlateProps()}>
     <Editable {...getEditableProps()} />
@@ -92,7 +89,7 @@ It's really that easy to get started. But `useSlateWithExtensions` is much more 
 ### Defining our first extension
 
 Extensions are simply javascript objects which conform to the [`SlateExtension` interface](./src/types/SlateExtension.ts).
-The interface is very similar to the `Slate` api and includes such as `onChange`,`isVoid`, `renderElement` and `decorate`.
+The interface merges the `Slate` and `Editable` props and provides methods such as `isVoid`, `onChange`, and `onPaste`.
 
 We'll start by writing a simple extension which logs all of the editor operations on change.
 
@@ -166,7 +163,9 @@ To use `useSlateWithExtensions` you just need to
 ## Why
 
 The built in Slate Plugins are amazing but they can only modify methods defined on the `Editor` interface such as `isInline`, `isVoid`, and `onChange`.
-The Next-gen [Slate-Plugins](https://github.com/udecode/slate-plugins) are incredibly useful but they only allow the user to modify methods defined on the `Editable` interface such as `decorate`, `renderLeaf`, and `renderElement`.
+The Next-gen [Slate-Plugins](https://github.com/udecode/slate-plugins) ~~are incredibly useful but they only allow the user to modify methods defined on the `Editable` interface such as `decorate`, `renderLeaf`, and `renderElement`~~
+
+> The Next-gen [Slate-Plugins] took inspiration from this library in their v1 release! If you're trying to decide between the two, think of this hook as a small and relatively unopinionated solution which helps you write your own code in a clean and structured way. Think of Next-gen slate plugins as a less flexible, more opinionated and larger implementation that provides a ton of functionality out of the box. If the Next-gen plugins work for your use case or provide functionality that you want to use such as lists then go with those, it will save you a ton of time! If you just want a framework to write custom extensions in a clean and composable way then stick with `useSlateWithExtensions`.
 
 Unfortunately many of the common use cases for using Slate involve plugging into the methods defined on both the `Editor` and the `Editable` interfaces.
 For instance [the mention example](https://github.com/ianstormtaylor/slate/blob/master/site/examples/mentions.tsx) from the docs uses a Slate Plugin `withPlugins` to override `isInline` and `isVoid` on the `Editor` interface. This plugin is nice and encapsulated!
@@ -177,7 +176,7 @@ This violates the [open-closed principle](https://en.wikipedia.org/wiki/Open%E2%
 Now we could try to compromise and use built in plugins when we want to extend the `Editor` API and use next gen plugins to extend the `Editable` API.
 But then our logic is split up across multiple functions and we need to use complex workarounds in order to share common state.
 
-_useSlateWithExtensions_ gives users the ability to write `SlateExtension`s which access apis from both the `Editor` and `Editable` interfaces.
+`useSlateWithExtensions` gives users the ability to write `SlateExtension`s which access apis from both the `Editor` and `Editable` interfaces.
 Because the entire `Slate` api is exposed in a single interface these extensions can provide self contained modules for implementing custom behavior in Slate.
 The `useSlateWithExtensions` hook lets users easily combine various extensions together to create rich text editing experiences.
 I've outlined several examples of using these extensions below, highlighting how these new extensions encapsulate behavior, lead to a nicely decoupled design, and are easily composable.
@@ -370,7 +369,7 @@ I've added links to all the important functions below.
 
 ## Using existing slate plugins with SlateExtensions
 
-_The official withHistory plugin does not work with useSlateWithExtensions_. To use history with _useSlateWithExtensions_ `import withHistoryStable from useSlateExtension` and replace all instances of `withHistory` with `withHistoryStable`.
+**withHistory** now works with `useSlateWithExtensions`. I've left the code below to explain how a plugin might not work with `useSlateWithExtensions`.
 Read on to figure out how to make your own plugins work with _useSlateWithExtensions_.
 
 Most of the time you should be able to pass your existing plugins to _useSlateWithExtensions_ without any modification.
@@ -538,12 +537,10 @@ const withHistoryStable = (editor: Editor): Editor => {
 ```
 
 This plugin actually works and is less than 15 lines of code with comments.
+`useSlateWithExtensions` previously exposed this plugin as a helper method.
+Now you can add `withHistory` as a `prePlugin`.
 
-_useSlateWithExtensions_ exposes this plugin as a helper method.
-The actual implementation is very similar to this one but use a couple of typpe checks.
-If you want to see the complete code checkout [withHistoryStable.ts](./src/core/plugins/withHistoryStable.ts).
-
-Hopefully you can see that it isn't very hard to modify plugins to work with _useSlateWithExtensions_ as long as you are careful, methodical, and aware of the two changes _useSlateWithExtensions_ makes.
+Hopefully you can see that it isn't very hard to modify plugins to work with `useSlateWithExtensions` as long as you are careful, methodical, and aware of the two changes `useSlateWithExtensions` makes.
 
 ## Road map
 

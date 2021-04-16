@@ -9,7 +9,7 @@ import { SlateExtension, SlatePlugin } from '../types';
  */
 export const useEditorMethodExtensionsPlugin = (
   extensions: SlateExtension[],
-  method: FunctionPropertyNames<ReactEditor>
+  method: FunctionPropertyNames<ReactEditor> & keyof SlateExtension
 ): SlatePlugin<ReactEditor> =>
   useCallback<SlatePlugin<ReactEditor>>(
     (editor: ReactEditor) => {
@@ -17,7 +17,7 @@ export const useEditorMethodExtensionsPlugin = (
 
       const middleware = compose(
         ...extensions.map(extension => extension[method]).filter(isDefined),
-        editorMethod
+        editorMethod as any
       );
 
       editor[method] = (...args: any[]) => {

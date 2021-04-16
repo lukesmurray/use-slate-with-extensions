@@ -50,7 +50,11 @@ export const useSlateWithExtensions = (
   // create the editor as a singleton
   // see https://reactjs.org/docs/hooks-faq.html#how-to-create-expensive-objects-lazily
   const [editorSingleton] = useState(
-    () => pipe(options?.editor ?? createEditor(), ...prePlugins) as ReactEditor
+    () =>
+      pipe(
+        options?.editor ?? (createEditor() as any),
+        ...prePlugins
+      ) as ReactEditor
   );
 
   // memoize the original functions from the editor
@@ -259,9 +263,6 @@ export const useSlateWithExtensions = (
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const renderLeaf = useCallback(renderLeafExtensions(extensions), [
     ...extensions.flatMap(e => e.renderLeafDeps ?? []),
-    // see https://github.com/ianstormtaylor/slate/pull/3437
-    // render leaf cannot be memoized unless the decorate deps are passed to it
-    ...extensions.flatMap(e => e.decorateDeps ?? []),
   ]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

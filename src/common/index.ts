@@ -1,4 +1,4 @@
 export * from './data';
 export * from './guards';
-export * from './types';
+export * from './typeHelpers';
 export * from './utils';

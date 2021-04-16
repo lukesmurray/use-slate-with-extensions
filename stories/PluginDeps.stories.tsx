@@ -12,12 +12,12 @@ export default {
 
 export const Default: Story = () => {
   const [value, onChange] = useSlateState();
-  const pluginsDeps = useContrivedPluginDeps(value, 0.2);
+  const postPluginDeps = useContrivedPluginDeps(value, 0.2);
 
   const { getEditableProps, getSlateProps } = useSlateWithExtensions({
     onChange,
     value,
-    pluginsDeps,
+    postPluginDeps,
   });
 
   return (
@@ -35,7 +35,7 @@ export const Default: Story = () => {
 export const WithMentionsAndHighlights: Story = () => {
   const [value, onChange] = useSlateState(initialValue);
 
-  const pluginsDeps = useContrivedPluginDeps(value, 0.2);
+  const postPluginDeps = useContrivedPluginDeps(value, 0.2);
 
   // define the extensions
   const { getSearchBarProps, ...highlightExtension } = useHighlightExtension(
@@ -48,7 +48,7 @@ export const WithMentionsAndHighlights: Story = () => {
     onChange,
     value,
     extensions: [highlightExtension, mentionExtension],
-    pluginsDeps,
+    postPluginDeps,
   });
 
   // render the search bar and the mention select

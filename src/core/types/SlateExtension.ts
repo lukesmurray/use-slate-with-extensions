@@ -7,18 +7,32 @@ import {
   DeleteFragment,
   GetFragment,
   InsertBreak,
+  InsertData,
   InsertFragment,
   InsertNode,
   InsertText,
   IsInline,
   IsVoid,
   NormalizeNode,
+  OnBlur,
   OnChange,
+  OnClick,
+  OnCompositionEnd,
+  OnCompositionStart,
+  OnCompositionUpdate,
+  OnCopy,
+  OnCut,
   OnDOMBeforeInput,
+  OnDragOver,
+  OnDragStart,
+  OnDrop,
+  OnFocus,
   OnKeyDown,
+  OnPaste,
   RemoveMark,
   RenderElement,
   RenderLeaf,
+  SetFragmentData,
 } from '.';
 
 /**
@@ -225,4 +239,144 @@ export interface SlateExtension {
    * Dependencies for removeMark
    */
   removeMarkDeps?: any[];
+
+  /**
+   * @see {InsertData}
+   */
+  insertData?: InsertData;
+
+  /**
+   * Dependencies for InsertData
+   */
+  insertDataDeps?: any[];
+
+  /**
+   * @see {SetFragmentData}
+   */
+  setFragmentData?: SetFragmentData;
+
+  /**
+   * Dependencies for SetFragmentData
+   */
+  setFragmentDataDeps?: any[];
+
+  /**
+   * @see {OnBlur}
+   */
+  onBlur?: OnBlur;
+
+  /**
+   * Dependencies for onBlur
+   */
+  onBlurDeps?: any[];
+
+  /**
+   * @see {OnClick}
+   */
+  onClick?: OnClick;
+
+  /**
+   * Dependencies for onClick
+   */
+  onClickDeps?: any[];
+
+  /**
+   * @see {OnCompositionEnd}
+   */
+  onCompositionEnd?: OnCompositionEnd;
+
+  /**
+   * Dependencies for onCompositionEnd
+   */
+  onCompositionEndDeps?: any[];
+
+  /**
+   * @see {OnCompositionUpdate}
+   */
+  onCompositionUpdate?: OnCompositionUpdate;
+
+  /**
+   * Dependencies for onCompositionUpdate
+   */
+  onCompositionUpdateDeps?: any[];
+
+  /**
+   * @see {OnCompositionStart}
+   */
+  onCompositionStart?: OnCompositionStart;
+
+  /**
+   * Dependencies for onCompositionStart
+   */
+  onCompositionStartDeps?: any[];
+
+  /**
+   * @see {OnCopy}
+   */
+  onCopy?: OnCopy;
+
+  /**
+   * Dependencies for onCopy
+   */
+  onCopyDeps?: any[];
+
+  /**
+   * @see {OnCut}
+   */
+  onCut?: OnCut;
+
+  /**
+   * Dependencies for onCut
+   */
+  onCutDeps?: any[];
+
+  /**
+   * @see {OnDragOver}
+   */
+  onDragOver?: OnDragOver;
+
+  /**
+   * Dependencies for onDragOver
+   */
+  onDragOverDeps?: any[];
+
+  /**
+   * @see {OnDragStart}
+   */
+  onDragStart?: OnDragStart;
+
+  /**
+   * Dependencies for onDragStart
+   */
+  onDragStartDeps?: any[];
+
+  /**
+   * @see {OnDrop}
+   */
+  onDrop?: OnDrop;
+
+  /**
+   * Dependencies for onDrop
+   */
+  onDropDeps?: any[];
+
+  /**
+   * @see {OnFocus}
+   */
+  onFocus?: OnFocus;
+
+  /**
+   * Dependencies for onFocus
+   */
+  onFocusDeps?: any[];
+
+  /**
+   * @see {OnPaste}
+   */
+  onPaste?: OnPaste;
+
+  /**
+   * Dependencies for onPaste
+   */
+  onPasteDeps?: any[];
 }

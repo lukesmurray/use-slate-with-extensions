@@ -27,6 +27,26 @@ export const OnChange: Story = () => {
   );
 };
 
+export const OnPaste: Story = () => {
+  const ext1 = useOnPasteExt('ext1');
+  const ext2 = useOnPasteExt('ext2');
+  const ext3 = useOnPasteExt('ext3');
+
+  const extensions = useMemo(() => {
+    return [ext1, ext2, ext3];
+  }, [ext1, ext2, ext3]);
+
+  const { getEditableProps, getSlateProps } = useSlateWithExtensions({
+    extensions,
+  });
+
+  return (
+    <Slate {...getSlateProps()}>
+      <Editable {...getEditableProps()} />
+    </Slate>
+  );
+};
+
 export const OnKeyDown: Story = () => {
   const ext1 = useOnKeyDownExt('ext1');
   const ext2 = useOnKeyDownExt('ext2');
@@ -132,6 +152,15 @@ const useOnChangeExt = (name: string): SlateExtension => {
     onChange: (e, n) => {
       console.log(name);
       n?.(e);
+    },
+  };
+};
+
+const useOnPasteExt = (name: string): SlateExtension => {
+  return {
+    onPaste: (ev, ed, n) => {
+      console.log(name);
+      n?.(ev, ed);
     },
   };
 };

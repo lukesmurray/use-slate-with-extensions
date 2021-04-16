@@ -1,15 +1,18 @@
 import { useCallback } from 'react';
-import { Editor } from 'slate';
+import { ReactEditor } from 'slate-react';
 import { compose, FunctionPropertyNames, isDefined } from '../../common';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SlateExtension, SlatePlugin } from '../types';
 
+/**
+ * Extend a method on the editor using the SlateExtensions
+ */
 export const useEditorMethodExtensionsPlugin = (
   extensions: SlateExtension[],
-  method: FunctionPropertyNames<Editor>
-): SlatePlugin =>
-  useCallback<SlatePlugin>(
-    (editor: Editor) => {
+  method: FunctionPropertyNames<ReactEditor>
+): SlatePlugin<ReactEditor> =>
+  useCallback<SlatePlugin<ReactEditor>>(
+    (editor: ReactEditor) => {
       const { [method]: editorMethod } = editor;
 
       const middleware = compose(

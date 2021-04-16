@@ -7,6 +7,6 @@ import { Editor } from 'slate';
  * object.
  * Official plugins are `withHistory` and `withReact`
  */
-export interface SlatePlugin {
-  (editor: Editor): Editor;
+export interface SlatePlugin<T = Editor> {
+  (editor: T): T;
 }

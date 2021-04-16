@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.4.0...v0.5.0) (2021-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **withhistory:** remove withHistoryStable
+
+* **withhistory:** remove withHistory implementation and other deprecated code ([4f6187f](https://github.com/lukesmurray/use-slate-with-extensions/commit/4f6187f00bbfc33b09c58302883a34dc6655cfe6))
+
 ## [0.4.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.3...v0.4.0) (2021-04-16)
 
 

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.3...v0.4.0) (2021-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** there are now two ways to apply withPlugins. as prePlugins and postPlugins.
+prePlugins are applied once to the editor before any extensions are applied and change the editor
+for it's entire lifecycle. Think of withReact and withHistory. postPlugins are applied after
+extensions are applied and may be modified during the editor lifecycle. For example a custom
+decorate method could be used as a postPlugin. postPlugins accept dependencies and can update while
+prePlugins never accept dependencies and never update.
+
+### Features
+
+* **deps:** upgrade dependencies ([7093ad0](https://github.com/lukesmurray/use-slate-with-extensions/commit/7093ad00224c9dbfd817fef980126f48fd58730d)), closes [#2](https://github.com/lukesmurray/use-slate-with-extensions/issues/2)
+* **editable:** add various editable events to the extensions api ([4e9aacf](https://github.com/lukesmurray/use-slate-with-extensions/commit/4e9aacfa3362ef5d2f39f7cf2537d005fe6f363f))
+
 ### [0.3.3](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.3.2...v0.3.3) (2021-02-16)
 
 

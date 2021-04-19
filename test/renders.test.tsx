@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { Editable, Slate } from 'slate-react';
 import { useSlateState, useSlateWithExtensions } from '../dist';
 
@@ -25,8 +25,7 @@ describe('useSlateWithExtensions', () => {
         </Slate>
       );
     };
-    const div = document.createElement('div');
-    ReactDOM.render(<BasicExample />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    render(<BasicExample />);
+    expect(1).toBe(1);
   });
 });

@@ -1,5 +1,5 @@
 import { Editor, Element } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function used to determine if an element is an inline element.

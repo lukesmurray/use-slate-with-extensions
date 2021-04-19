@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { Editor } from 'slate';
 import { EditableProps } from 'slate-react/dist/components/editable';
-import { compose, isDefined } from '../../common';
+import { compose } from '../fpUtils';
+import { isDefined } from '../guards';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SlateExtension } from '../types';
 

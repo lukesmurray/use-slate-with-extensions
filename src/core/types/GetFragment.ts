@@ -1,5 +1,5 @@
 import { Descendant, Editor } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever get fragment occurs in the editor.

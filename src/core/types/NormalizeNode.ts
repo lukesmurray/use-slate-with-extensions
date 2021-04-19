@@ -1,5 +1,5 @@
 import { Editor, NodeEntry } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever normalization occurs in the editor.

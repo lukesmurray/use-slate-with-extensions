@@ -1,6 +1,8 @@
 import { useCallback } from 'react';
 import { ReactEditor } from 'slate-react';
-import { compose, FunctionPropertyNames, isDefined } from '../../common';
+import { compose } from '../fpUtils';
+import { isDefined } from '../guards';
+import { FunctionPropertyNames } from '../typeHelpers';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SlateExtension, SlatePlugin } from '../types';
 

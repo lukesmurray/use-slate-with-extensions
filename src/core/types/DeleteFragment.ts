@@ -1,5 +1,5 @@
 import { Editor } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever delete fragment occurs in the editor.

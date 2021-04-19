@@ -1,4 +1,4 @@
-import { Head } from '..';
+import { Head } from '../typeHelpers';
 
 /**
  * Compose an array of middleware. Each function is assumed to have `next` as

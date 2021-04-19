@@ -1,5 +1,5 @@
 import { Editor, Operation } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever an operation is applied in the editor.

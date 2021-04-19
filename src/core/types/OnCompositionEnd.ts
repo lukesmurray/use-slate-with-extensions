@@ -1,6 +1,6 @@
 import { CompositionEvent } from 'react';
 import { Editor } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function used to handle composition end.

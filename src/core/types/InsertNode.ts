@@ -1,5 +1,5 @@
 import { Editor, Node } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever insert node occurs in the editor.

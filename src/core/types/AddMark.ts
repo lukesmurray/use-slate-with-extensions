@@ -1,5 +1,5 @@
 import { Editor } from 'slate';
-import { Next } from '../../common';
+import { Next } from '../typeHelpers';
 
 /**
  * Function called whenever a mark is added in the editor.

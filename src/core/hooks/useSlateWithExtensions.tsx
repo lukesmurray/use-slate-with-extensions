@@ -2,7 +2,9 @@ import { useCallback, useMemo, useState } from 'react';
 import { createEditor, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { ReactEditor, withReact } from 'slate-react';
-import { defaultInitialState, FunctionProperties, pipe } from '../../common';
+import { defaultInitialState } from '../data';
+import { pipe } from '../fpUtils';
+import { FunctionProperties } from '../typeHelpers';
 import {
   EditableWithExtensionsProps,
   SlateWithExtensionsProps,

@@ -88,7 +88,7 @@ It's really that easy to get started. But `useSlateWithExtensions` is much more 
 
 ### Defining our first extension
 
-Extensions are simply javascript objects which conform to the [`SlateExtension` interface](./src/types/SlateExtension.ts).
+Extensions are simply javascript objects which conform to the [`SlateExtension` interface](./src/core/types/SlateExtension.ts).
 The interface merges the `Slate` and `Editable` props and provides methods such as `isVoid`, `onChange`, and `onPaste`.
 
 We'll start by writing a simple extension which logs all of the editor operations on change.
@@ -365,7 +365,7 @@ I've added links to all the important functions below.
 
 ### SlateExtension Interface
 
-- [SlateExtension](./src/types/SlateExtension.ts)
+- [SlateExtension](./src/core/types/SlateExtension.ts)
 
 ## Using existing slate plugins with SlateExtensions
 

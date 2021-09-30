@@ -15,6 +15,7 @@ import {
   decorateExtensions,
   renderElementExtensions,
   renderLeafExtensions,
+  renderPlaceholderExtensions,
   useEditableEventExtensionsPlugin,
   useEditorMethodExtensionsPlugin,
 } from '../utils';
@@ -268,6 +269,12 @@ export const useSlateWithExtensions = (
   ]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  const renderPlaceholder = useCallback(
+    renderPlaceholderExtensions(extensions),
+    [...extensions.flatMap(e => e.renderPlaceholderDeps ?? [])]
+  );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const decorate = useCallback(decorateExtensions(editor, extensions), [
     ...extensions.flatMap(e => e.decorateDeps ?? []),
   ]);
@@ -276,6 +283,7 @@ export const useSlateWithExtensions = (
     return {
       renderElement,
       renderLeaf,
+      renderPlaceholder,
       onKeyDown,
       decorate,
       onDOMBeforeInput,
@@ -310,6 +318,7 @@ export const useSlateWithExtensions = (
     onPaste,
     renderElement,
     renderLeaf,
+    renderPlaceholder,
   ]);
 
   return {

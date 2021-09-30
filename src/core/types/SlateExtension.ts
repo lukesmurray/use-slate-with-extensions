@@ -34,6 +34,7 @@ import {
   RenderLeaf,
   SetFragmentData,
 } from '.';
+import { RenderPlaceholder } from './RenderPlaceholder';
 
 /**
  * The shape of a Slate extensions.
@@ -59,6 +60,16 @@ export interface SlateExtension {
    * Dependencies for renderLeaf
    */
   renderLeafDeps?: any[];
+
+  /**
+   * @see {RenderPlaceholder}
+   */
+  renderPlaceholder?: RenderPlaceholder;
+
+  /**
+   * Dependencies for renderPlaceholder
+   */
+  renderPlaceholderDeps?: any[];
 
   /**
    * @see {OnKeyDown}

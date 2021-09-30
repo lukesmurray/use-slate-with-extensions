@@ -31,6 +31,7 @@ export * from './OnPaste';
 export * from './RemoveMark';
 export * from './RenderElement';
 export * from './RenderLeaf';
+export * from './RenderPlaceholder';
 export * from './SetFragmentData';
 export * from './SlateExtension';
 export * from './SlatePlugin';

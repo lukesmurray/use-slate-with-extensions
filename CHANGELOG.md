@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.5.0...v0.5.1) (2021-09-30)
+
+
+### Features
+
+* **renderplaceholder:** add `renderPlaceholder` prop to extensions ([9366237](https://github.com/lukesmurray/use-slate-with-extensions/commit/93662378626f89889f6c92f46130ed9668e51ddb)), closes [#10](https://github.com/lukesmurray/use-slate-with-extensions/issues/10)
+
+
+### Bug Fixes
+
+* **testing:** add node 12 target ([0074607](https://github.com/lukesmurray/use-slate-with-extensions/commit/0074607175ebff534566b49a5fff0969771ac199))
+* **testing:** replace react dom with testing-library/react ([c42f746](https://github.com/lukesmurray/use-slate-with-extensions/commit/c42f746e5d86f1bf8c291585985cd5bd0970631a))
+* **workflows:** remove node 12 target ([3c428fa](https://github.com/lukesmurray/use-slate-with-extensions/commit/3c428fa67256070d7bc9b143d619ca9b7d60030b))
+
 ## [0.5.0](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.4.0...v0.5.0) (2021-04-16)
 
 

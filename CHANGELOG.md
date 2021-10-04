@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.5.1...v0.5.2) (2021-10-04)
+
+
+### Bug Fixes
+
+* **next type:** expose next type ([eba1f2d](https://github.com/lukesmurray/use-slate-with-extensions/commit/eba1f2d1577bfbfadf27a3c562d779e7c778d6ef)), closes [#13](https://github.com/lukesmurray/use-slate-with-extensions/issues/13)
+
 ### [0.5.1](https://github.com/lukesmurray/use-slate-with-extensions/compare/v0.5.0...v0.5.1) (2021-09-30)
 
 

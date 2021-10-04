@@ -7,8 +7,8 @@ import { Next } from '../typeHelpers';
  * Use next to call the next onKeyDown handler.
  * Next is undefined if there are no more onKeyDown handlers.
  */
-export type OnKeyDown = (
-  event: KeyboardEvent<{}>,
+export type OnKeyDown = <T>(
+  event: KeyboardEvent<T>,
   editor: Editor,
   next: Next<OnKeyDown> | undefined
 ) => undefined | void;

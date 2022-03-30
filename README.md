@@ -349,19 +349,19 @@ I've added links to all the important functions below.
 ### SlateExtension Functions
 
 - Editable API
-  - [isInline](./src/types/IsInline.ts)
-  - [isVoid](./src/types/IsVoid.ts)
-  - [onChange](./src/types/OnChange.ts)
+  - [isInline](./src/core/types/IsInline.ts)
+  - [isVoid](./src/core/types/IsVoid.ts)
+  - [onChange](./src/core/types/OnChange.ts)
 - Editor API
-  - [renderElement](./src/types/RenderElement.ts)
-  - [renderLeaf](./src/types/RenderLeaf.ts)
-  - [onKeyDown](./src/types/OnKeyDown.ts)
-  - [decorate](./src/types/Decorate.ts)
-  - [onDOMBeforeInput](./src/types/OnDOMBeforeInput.ts)
+  - [renderElement](./src/core/types/RenderElement.ts)
+  - [renderLeaf](./src/core/types/RenderLeaf.ts)
+  - [onKeyDown](./src/core/types/OnKeyDown.ts)
+  - [decorate](./src/core/types/Decorate.ts)
+  - [onDOMBeforeInput](./src/core/types/OnDOMBeforeInput.ts)
 
 ### useSlateWithExtensionsOptions
 
-- [useSlateWithExtensionsOptions](./src/types/useSlateWithExtensionsOptions.tsx)
+- [useSlateWithExtensionsOptions](./src/core/types/UseSlateWithExtensionsOptions.tsx)
 
 ### SlateExtension Interface
 
